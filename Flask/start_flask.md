@@ -74,3 +74,75 @@ def hi(name):
 ```
 
 We can use the input value in the route argument. (name)
+
+
+
+## Really Start to make Flask Project
+
+I would to create Flask Project can search Google, Naver and Daum
+
+Firstly, import Flask class and make Flask instance.
+
+```python
+# app.py
+from flask import Flask, render_template
+
+app = Flask(__name__)
+```
+
+
+
+and then, you should make index page and app function
+
+
+
+```python
+# app.py
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return render_template("index.html")
+```
+
+
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Fake Search</h1>
+    <h2>Google Search</h2>
+    <form action="https://www.google.com/search">
+        <input type="text" name="q">
+        <input type="submit">
+    </form>
+    <h2>Naver Search</h2>
+    <form action="http://search.naver.com/search.naver">
+        <input type="text" name="query">
+        <input type="submit">
+    </form>
+    <h2>Daum Search</h2>
+    <form action="https://search.daum.net/search?w=tot&">
+        <input type="text" name="q">
+        <input type="submit">
+    </form>
+</body>
+</html>
+```
+
+
+
+At once, you can search google, naver and daum search on your index page, like below
+
+
+
+![index page can search a variety of search site](..\images\flask_index_search_page.JPG)

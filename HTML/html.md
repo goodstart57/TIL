@@ -1,8 +1,8 @@
 # Basic HTML (HyperText Markup Language)
 
-You can move other html documents and construct web page by using html tags.
+You can move other HTML documents and construct web page by using HTML tags.
 
-`Hyper` means that we can move around html documents
+`Hyper` means that we can move around HTML documents
 
 ## basic template
 
@@ -63,11 +63,13 @@ input ! and push tab then html basic construction is printed like below code.
 
 
 
-## html tags
+## HTML tags
+
+there are various tags to construct web page in HTML
 
 ### a
 
-`a` (anchor) tag can link other html document, media and so on!
+`a` (anchor) tag can link other HTML document, media and so on!
 
 
 ```html
@@ -78,7 +80,15 @@ input ! and push tab then html basic construction is printed like below code.
 
 
 
-write link to move other html in href
+write link to move other HTML in href
+
+
+
+### header
+
+\<h1\> ~ \<h6\> is title tag
+
+The letter size decreases from \<h1\> to \<h6\> 
 
 
 
@@ -110,17 +120,34 @@ write local path or url to load image
 
 
 
-![youtube share button](./images/youtube-share.png)
+![youtube share button](../images/youtube-share.png)
 
 You can copy iframe tag from share of youtube video 
 
 
 
-### header
+### form 
 
-\<h1\> ~ \<h6\> is title tag
+you can access web page, file, when you input the enter on input tag
 
-The letter size decreases from \<h1\> to \<h6\> 
+
+
+### input
+
+User can input string in the `input` tag.
+
+With form tag, you can access web page, file you want
+
+```html
+<form action="https://www.google.com/search">
+    <input type="text" name="q">
+    <input type="submit">
+</form>
+```
+
+If you just write "/search" without domain, then access to your domain + form action  + input tag + text you typed
+
+
 
 
 
@@ -145,7 +172,7 @@ The letter size decreases from \<h1\> to \<h6\>
 
 
 
-### list
+list
 
 ol (ordered list), ul(unordered list)
 
@@ -161,6 +188,12 @@ ol (ordered list), ul(unordered list)
     <li>7</li>
 </ul>
 ```
+
+
+
+
+
+
 
 
 
@@ -189,7 +222,7 @@ We can find multiple tags by searching class, and specific word by searching id
 ```
 HTML is important skeleton, however, it isn't pretty.
 
-If you want to decorate html document, then css can help you!
+If you want to decorate HTML document, then css can help you!
 
 + when you meet js and python (or ruby, nodejs etc..), feel wonderous
 ```
