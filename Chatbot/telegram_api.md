@@ -21,6 +21,7 @@ https://api.telegram.org/bot123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11/getMe
 | getMe       | Account Information               |
 | getUpdates  | Messages updated for my bot infor |
 | sendMessage | Can Send Message                  |
+| setWebhook  | set webhook to my chatbot         |
 
 
 
