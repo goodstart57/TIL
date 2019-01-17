@@ -1,0 +1,31 @@
+{% extends 'layout.html'%}
+
+{% block content %}
+    <div class="container">
+        <div class="row d-flex justify-content-around">
+            {% for info in infos %}
+            <div class="col-3 card text-center mx-1 mb-4">
+                <div class="card-body">
+                    <a href="{{ info["gurl"] }}">
+                        <img class="card-img-top" src={{ info["gurl"] }} alt="Card image cap">
+                    </a>
+                    <h5 class="card-title">{{ info["title"] }}</h5>
+                </div>
+                <div class="row card-footer d-flex justify-content-center">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ info["olink"] }}">Origin</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ info["glink"] }}">Giphy</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row card-footer d-flex justify-content-center">
+                    <span>Rating : {{ info["rating"] }}</span>
+                </div>
+            </div>
+            {% endfor%}
+        </div>
+    </div>
+{% endblock %}
