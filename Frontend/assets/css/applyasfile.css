@@ -1,0 +1,27 @@
+h1 {
+    margin-left: 10px;
+    background-color: yellowgreen;
+}
+
+h2 {
+    margin-left: 10px;
+    background-color: goldenrod;
+    color: teal;
+    font-size: 10ex;
+}
+
+h3 {
+    color: violet;
+}
+
+p {
+    background-color: darksalmon;
+    font-size: 2em;
+}
+
+#salmon {
+    background-color: darksalmon;
+}
+.gray-font {
+    color: gray;
+}

@@ -227,3 +227,12 @@ If you want to decorate HTML document, then css can help you!
 + when you meet js and python (or ruby, nodejs etc..), feel wonderous
 ```
 
+
+
+## Tip
+
+### shorcut making tag
+
+if you want to cereate `<div class="my"><div></div></div>`
+
+just write `div.my>div`
