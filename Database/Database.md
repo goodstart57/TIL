@@ -430,3 +430,92 @@ CREATE TABLE users(
 
 모든 컬럼이 TEXT로 되어있다.
 
+
+
+### Sqlite3 in Python
+
+#### 기존 sqlite3 db 불러와서 데이터 10 레코드 불러오기
+
+```python
+import sqlite3 # sqlite3 불러오기
+
+conn = sqlite3.connect("test.sqlite3") # cmd에서 "sqlite3 test.sqlite3"와 같다.
+cur = conn.cursor() # create cursor
+cur.execute("SELECT * FROM users LIMIT 10") # write sql script => execute()
+data = cur.fetchall() # run cursor => fetchone(), fetchall()
+print(data)
+```
+
+```
+[('1', '정호', '유', '40', '전라북도', '016-7280-2855', '370'), ('2', '경희', '이', '36', '경상남도', '011-9854-5133', '5900'), ('3', '정자', '구', '37', '전라남도', '011-4177-8170', '3100'), ('4', '미경', '장', '40', '충청남도', '011-9079-4419', '250000'), ('5', '영환', '차', '30', '충청북도', '011-2921-4284', '220'), ('6', '서준', '이', '26', '충청북도', '02-8601-7361', '530'), ('7', '주원', '민', '18', '경기도', '011-2525-1976', '390'), ('8', '예진', '김', '33', '충청북도', '010-5123-9107', '3700'), ('9', '서현', '김', '23', '제주특별자치도', '016-6839-1106', '43000'), ('10', '서윤', '오', '22', '충청남도', '011-9693-6452', '49000')]
+```
+
+
+
+#### users 테이블의 열 이름 얻기
+
+```python
+cur.execute("PRAGMA table_info(users)")
+colnames = cur.fetchall()
+for col in colnames:
+    print(col)
+```
+
+
+
+#### 데이터 입력하기
+
+```python
+users_colnames = "('id', 'first_name', 'last_name', 'age', 'country', 'phone', 'balance')"
+my_input_data = "('1001', '재서', '이', '27', '울산광역시', '010-9399-3170', '7000000000')"
+cur.execute("INSERT INTO users {} VALUES {}".format(users_colnames, my_input_data))
+```
+
+위와 같이 데이터를 입력하고난 뒤에 다시 데이터베이스를 불러서 `cur.execute("SELECT * FROM users WHERE first_name = '재서'")`으로 데이터를 찾아도 존재하지 않는다.
+
+아마도 입력하고 나서 데이터 변경사항을 저장하지 않아서 그런것 같다.
+
+
+
+git과 같이 db에도 commit이 필요한데 python3에서는 connection에 commit하는 작업이 필요하고 아래와 같은 명령어를 통해서 수행할 수 있다.
+
+```python
+conn.commit()
+```
+
+
+
+> CRUD 중
+>
+> Create, Update, Delete => commit Oㄹ
+>
+> Read => commit X
+>
+> cursor가 아닌 connection에 commit을 해야한다!
+
+
+
+#### 테이블 생성
+
+```python
+sql = """
+CREATE TABLE articles (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT,
+    content TEXT
+);
+"""
+print(sql)
+db.execute(sql)
+c.commit()
+```
+
+
+
+#### 테이블 목록 불러오기
+
+```python
+db.execute("SELECT name FROM sqlite_master WHERE type='table';")
+print(db.fetchall()) # [('sqlite_sequence',), ('classmates',), ('users',), ('articles',)]
+```
+
