@@ -487,7 +487,7 @@ conn.commit()
 
 > CRUD 중
 >
-> Create, Update, Delete => commit Oㄹ
+> Create, Update, Delete => commit O
 >
 > Read => commit X
 >
