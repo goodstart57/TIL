@@ -97,8 +97,6 @@ db.session.add(Article(
 db.session.commit()
 ```
 
-파이썬에서 사용하는 것이 아닌 sqlite3 자체에서는 commit 명령어를 사용하지 않아도 자동으로 반영된다.
-
 
 
 ### Read
@@ -124,22 +122,4 @@ SELECT * FROM articles WHERE title = 'hi';
 # read record in sqlite3
 Article.session.filter_by(title="hi")
 ```
-
-
-
-### Update
-
-```sqlite
--- update record in sqlite3
-UPDATE articles SET title = "hihi" WHERE id = 1;
-```
-
-```python
-# read record in sqlite3
-article_object = Article.session.get(1)
-article_object.title = "hihi"
-db.session.commit()
-```
-
-
 
