@@ -302,7 +302,7 @@ id=4인 이재서가 삭제되
 
 
 
-### 새로운 DB 생성 및 csv 파일에서 테이블 불러오기
+#### 새로운 DB 생성 및 csv 파일에서 테이블 불러오기
 
 ```
 $ sqlite3 users.sqlite3
@@ -519,3 +519,14 @@ db.execute("SELECT name FROM sqlite_master WHERE type='table';")
 print(db.fetchall()) # [('sqlite_sequence',), ('classmates',), ('users',), ('articles',)]
 ```
 
+
+
+### Commit
+
+`create`, `update`, `delete`되어 데이터베이스의 변경사항을 반영시키는 것.
+
+=> 데이터베이스 트랜잭션의 내용 업데이트를 영구적으로 확정하는 것
+
+#### 왜 Commit이 필요한가?
+
+일관성을 보장하기 위해서 트랜잭션의 내용 업데이트를 커밋하는 동안에는 데이터베이스를 변경할 수 없도록 모든 접근을 막는다.
