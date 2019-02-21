@@ -8,13 +8,13 @@
 
 장고에서는 웹서비스를 구축하는데 필요한 작업들을 미리 준비해두었다.
 
-![hotframworks](images\hotframworks.png)
+![hotframworks](images/hotframworks.png)
 
 
 
 ## Django 구조
 
-![django-mtv](images\django-mtv.jpg)
+![django-mtv](images/django-mtv.jpg)
 
 
 
@@ -151,7 +151,7 @@ python manage.py runserver 0.0.0.0:8080
 
 서버 테스트 실행
 
-![django_runserver](images\django_runserver.png)
+![django_runserver](images/django_runserver.png)
 
 장고 프로젝트를 만들어 처음 실행시 이 화면이 나온다.
 
@@ -187,7 +187,7 @@ Starting development server at http://0.0.0.0:8080/
 LANGUAGE_CODE = 'ko-kr'
 ```
 
-![django_set_lang](images\django_set_lang.png)
+![django_set_lang](images/django_set_lang.png)
 
 <strike>`ko-kp`는 북쪽나라이므로 주의</strike>
 
@@ -286,7 +286,7 @@ def index(request):
 
 
 
-![django_hello](images\django_hello.png)
+![django_hello](images/django_hello.png)
 
 
 
@@ -316,7 +316,7 @@ def index(request):
 
 html에 적용
 
-![jango_dtl](C:\Workspace\TIL\Python\Django\images\django_dtl.png)
+![jango_dtl](images/django_dtl.png)
 
 적용된 결과
 
