@@ -293,6 +293,64 @@ for i in range(10):
 - 우선순위를 비교하여 배열의 적절한 위치에 삽입하는 구조
 - 이 때문에 삽입이나 삭제 연산이 일어날 때 원소의 재배치가 일어나서 소요되는 시간이나 메모리 낭비가 크다.
 
+### 연결 리스트를 이용한 구현
+
+```python
+class PriorityQueue:
+    def __init__(self):
+        self.front, self.rear = None, None
+    
+    def enqueue(self, item):
+        if self.is_empty():
+            new_node = Node(item)
+            self.front = new_node
+            self.rear = new_node
+        elif item < self.front.data:
+            self.front = Node(item, self.front)
+        else:
+            p = self.front
+            while p.next != None and item > p.next.data:
+                p = p.next
+            new_node = Node(item, p.next)
+            p.next = new_node
+            if p.next == None:
+                self.rear.next = new_node
+                self.rear = new_node
+    
+    def dequeue(self):
+        if self.is_empty():
+            print('PriorityQueue is empty')
+            return None
+        else:
+            data = self.front.data
+            self.front = self.front.next
+            if self.is_empty():
+                self.rear = None
+            return data
+    
+    def is_empty(self):
+        return self.front == None
+    
+    def print(self):
+        if self.is_empty():
+            print('PriorityQueue is empty')
+        else:
+            p = self.front
+            while p.next != None:
+                print(f'[{p.data}|{id(p.next)}]-', end="")
+                p = p.next
+            print(f'[{p.data}|{id(p.next)}]')
+            
+pq = PriorityQueue()
+for i in [1, 5, 2, 4, 3]:
+    pq.enqueue(i)
+pq.print()
+```
+
+```
+[1|2458767180576]-[2|2458767180912]-[3|2458767181864]-[4|2458767180520]-[5|140715044981984]
+```
+
 
 
 ## 큐의 활용
