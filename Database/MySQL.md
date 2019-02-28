@@ -21,7 +21,7 @@ C:/Bitnami/mysql/bin/mysql.exe -u root -p
 
 
 
-## Use MySQL
+## Use MySQL - DATABASE
 
 ### CREATE DATABASE
 
@@ -57,6 +57,8 @@ Database changed
 ```
 
 
+
+## Use MySQL - TABLE
 
 ### CREATE TABLE
 
@@ -103,5 +105,47 @@ SELECT * FROM topic;
 |  1 | JavaScript | Computer language for web. | egoing  |
 |  2 | NPM        | Package manager            | leezche |
 +----+------------+----------------------------+---------+
+```
+
+
+
+## Use MySQL - USER
+
+### CREATE USER
+
+```mysql
+CREATE USER 'user_name'@'localhost' IDENTIFIED BY 'user_password';
+```
+
+
+
+### GRANT PRIVILEGES TO USER
+
+#### ALL PRIVILEGES
+
+```mysql
+GRANT <privileges_types> ON <database_name>.<table_name> TO 'user_name'@'ip' WITH GRANT OPTION;
+```
+
+```mysql
+GRANT ALL PRIVILEGES ON *.* TO 'goodstart'@'localhost' WITH GRANT OPTION;
+```
+
+
+
+### CHANGE USER PASSWORD
+
+When 'machine_learning' user is created
+
+```mysql
+CREATE USER 'machine_learning'@'localhost' IDENTIFIED BY 'new_password';
+```
+
+
+
+### DROP USER
+
+```mysql
+DROP USER 'machine_learning'@'localhost';
 ```
 
