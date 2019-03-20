@@ -1,7 +1,5 @@
 # HTTP Method
 
-
-
 ## GET
 
 정보를 가져오다.
@@ -40,3 +38,28 @@ response
 ```
 
 포스트 방식의 경우, 데이터를 api를 통해 보낼수 있으면 get 방식과 달리 url에 데이터가 포함되지 않기 때문에 get 방식보다 비교적 안전하다.
+
+
+
+이상으로 HTML4시대에 나온 방법이다.
+
+이러한 방식으로 URL(Uniform Resource Locator)을 사용하게 되는데
+
+자원이라는 의미의 URL에 동사가 들어가는것을 막기 위해서
+
+HTML5부터 PATCH/DELETE 요청 방법이 나온다.
+
+```
+HTML4 => HTML5
+
+getarticles/1/retrievecomments => articles/1/comments (GET)
+
+getarticles/1/deletecomments => articles/1/comments (DELETE)
+```
+
+
+
+위와 같이 URL이 깔끔해졌다.
+
+
+
