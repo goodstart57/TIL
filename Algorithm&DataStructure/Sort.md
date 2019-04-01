@@ -2,7 +2,12 @@
 
 ## Quick Sort
 
+피봇을 기준으로 나누다보면 전체 리스트가 피봇화되고, 결국에는 정렬할 필요가 없다.
+
+
+
 ```python
+# python code
 def quck_sort(a, begin, end):
     if begin < end:
         p = partition(a, begin, end)
