@@ -30,6 +30,47 @@ def power_recursive(n, r):
 
 시간 복잡도 : O(nlogn)
 
+```python
+def merge_sort(m):
+    if len(m) <= 1:
+        return m
+
+    # 1. DIVIDE
+    mid = len(m) // 2
+    left = m[:mid]
+    right = m[mid:]
+
+    # list 크기를 1로 만들기
+    left = merge_sort(left)
+    right = merge_sort(right)
+
+    # 2. CONQUER : 분할된 리스트 병합
+    return merge(left, right)
+
+
+def merge(left, right):
+    result = []
+
+    while len(left) > 0 and len(right) > 0:
+        if left[0] <= right[0]:
+            result.append(left.pop(0))
+        else:
+            result.append(right.pop(0))
+
+    if len(left) > 0:
+        result.extend(left)
+
+    if len(right) > 0:
+        result.extend(right)
+
+    return result
+
+
+print(merge_sort([4, 7, 3, 3, 6, 3, 1, 9]))
+```
+
+
+
 
 
 ### 퀵 정렬 (Quick Sort)
