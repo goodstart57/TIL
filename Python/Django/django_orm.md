@@ -1,5 +1,20 @@
 # ORM in Django
 
+```mermaid
+graph TD;
+SQL --> DBMS;
+ORM --> DBMS;
+DBMS --> 문서창고;
+```
+
+문서를 관리하기 위해 DBMS를 사용하고, DBMS에서 데이터 관리를 위해 SQL을 사용합니다.
+
+Database마다 조금씩 다른 SQL들을 최적화하기 위해서 ORM을 사용하여 DBMS를 조작할 수 있습니다.
+
+또한 ORM은 사용자가 비효율적인 코드를 작성하더라도 `lazy loading`을 통해서 최적화를 시킨 후에 코드를 작동시킵니다.
+
+
+
 ## Table Info
 
 ```python
@@ -85,3 +100,28 @@ my_article = Article.objects.filter(title="hi")
 my_article.delete()
 ```
 
+
+
+## Queryset API
+
+### Q
+
+Field Lookup Function
+
+
+
+### exact
+
+### iexact
+
+### contains
+
+### icontains
+
+### 
+
+### 
+
+### 
+
+### 

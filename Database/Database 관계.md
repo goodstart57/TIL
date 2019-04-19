@@ -22,9 +22,52 @@ one to many
 
 ### M:N
 
-Many to many
+Many to many, 수강신청 (수업, 학생)
 
-수강신청 (수업, 학생)
+RDBMS에서 M:N 관계를 표현할 수 없기 때문에 `pivot table`을 생성해서 간접적으로 표현한다.
+
+Django에서 models.ManyToManyField를 이용하여 구현할 수 있으며 두 모델(테이블) 중 한 곳에만 쓰면 된다.
+
+```python
+"""숙소 예약"""
+class Client(models.Model):
+    name = models.CharField(max_length=30)
+    
+    class Meta:
+        ordering = ('name', )
+
+
+class Resort(models.Model):
+    name = models.CharField(max_length=30)
+    clients = models.ManyToManyField(Client)
+```
+
+```sqlite
+--
+-- Create model Client
+--
+CREATE TABLE "sugangs_client" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "name" varchar(30) NOT NULL);
+--
+-- Create model Resort
+--
+CREATE TABLE "sugangs_resort" (
+    "id" integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "name" varchar(30) NOT NULL
+);
+CREATE TABLE "sugangs_resort_clients" (
+    "id" integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "resort_id" integer NOT NULL REFERENCES
+    "sugangs_resort" ("id") DEFERRABLE INITIALLY DEFERRED,
+    "client_id" integer NOT NULL REFERENCES
+    "sugangs_client" ("id") DEFERRABLE INITIALLY DEFERRED
+);
+CREATE UNIQUE INDEX "sugangs_resort_clients_resort_id_client_id_12b12781_uniq" ON "sugangs_resort_clients" ("resort_id", "client_id");
+CREATE INDEX "sugangs_resort_clients_resort_id_7b3321d2" ON "sugangs_resort_clients" ("resort_id");
+CREATE INDEX "sugangs_resort_clients_client_id_13c6c569" ON "sugangs_resort_clients" ("client_id");
+COMMIT;
+```
+
+
 
 ### 관계 없음
 
@@ -69,3 +112,49 @@ class Comment(models.Model):
 - SET_DEFAULT
 
   `Foreign Key`에 `default` 값을 설정합니다. 따라서 `default` 인자도 설정
+
+
+
+
+
+
+
+```python
+class Project(models.Model):
+    # Relations
+    user = models.ForeignKey(
+        Profile,
+        related_name="projects",
+        verbose_name=_("user")
+        )
+    # Attributes - Mandatory
+    name = models.CharField(
+        max_length=100,
+        verbose_name=_("name"),
+        help_text=_("Enter the project name")
+        )
+    color = models.CharField(
+        max_length=7,
+        default="#fff",
+        validators=[RegexValidator(
+            "(^#[0-9a-fA-F]{3}$)|(^#[0-9a-fA-F]{6}$)")],
+        verbose_name=_("color"),
+        help_text=_("Enter the hex color code, like #ccc or #cccccc")
+        )
+    # Attributes - Optional
+    # Object Manager
+    objects = managers.ProjectManager()
+    # Custom Properties
+    # Methods
+ 
+    # Meta and String
+    class Meta:
+        verbose_name = _("Project")
+        verbose_name_plural = _("Projects")
+        ordering = ("user", "name")
+        unique_together = ("user", "name")
+ 
+    def __str__(self):
+        return "%s - %s" % (self.user, self.name)
+```
+
