@@ -23,3 +23,9 @@ BDD
 html - bootstrap과 같이 2칸
 
 python - 4칸
+
+## Seamless
+
+봉제선이 없는 == 매끄러운
+
+두 기능 사이의 간격 즉 내부가 드러나지 않는 서비스
