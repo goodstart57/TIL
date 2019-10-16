@@ -1,5 +1,13 @@
 ### App Dev: Setting up a Development Environment - Python
 
+>
+> Qwiklabs 사이트의 Cloud Development 학습입니다.
+>
+> https://run.qwiklabs.com/focuses/1076?parent=catalog
+> 
+> 본 문서의 환경은 위 링크의 페이지를 기반으로 발급된 id에서 진행되어야합니다. 
+>
+
 #### Objectives
 
 - VM을 생성하는 Google Compute Engine으로 Google Cloud Platform에서 Python 개발환경 구축
