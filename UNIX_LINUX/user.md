@@ -43,18 +43,59 @@ sys:x:3:3:sys:/dev:/usr/sbin/nologin
 ### 계정 추가
 
 ```bash
+$ sudo adduser jfrost
+Adding user `jfrost' ...
+Adding new group `jfrost' (1001) ...
+Adding new user `jfrost' (1001) with group `jfrost' ...
+Creating home directory `/home/jfrost' ...
+Copying files from `/etc/skel' ...
+New password:
+Retype new password:
+passwd: password updated successfully
+Changing the user information for jfrost
+Enter the new value, or press ENTER for the default
+        Full Name []:
+        Room Number []:
+        Work Phone []:
+        Home Phone []:
+        Other []:
+Is the information correct? [Y/n] Y
+```
+
+계정과 함께 home directory 가 정상적으로 생성된 모습이다.
+
+
+
+```bash
 # useradd [option] [username]
-$ sudo useradd jfrost
+$ sudo useradd testusr
 ```
 
 정상적으로 계정이 생성되면 아무것도 출력되지 않는다.
 
 ```bash
-$ sudo cat /etc/passwd | grep jfrost
-jfrost:x:1001:1001::/home/jfrost:/bin/sh
+$ sudo cat /etc/passwd | grep testusr
+testusr:x:1002:1002::/home/testusr:/bin/sh
 ```
 
-계정이 잘 생성되었는지 확인
+계정이 잘 생성되었는지 확인...
+
+하지만 `/home/testusr`가 존재하지 않는다!
+
+
+
+😂 위 방법대로 `useradd` 명령어로 계정을 생성하면 home directory가 생성되지 않아서 su로 유저 변경을 하던 접속을하던 에러가 난다. 꼭 `-m` option을 붙여서 `sudo useradd -m testusr`와 같이 유저 생성할것. 
+
+```bash
+$ sudo useradd -m testusr
+$ ll /home
+total 20
+drwxr-xr-x  5 root    root    4096 Jan 10 14:54 ./
+drwxr-xr-x 19 root    root    4096 Jan  9 16:25 ../
+drwxr-xr-x  2 chicken chicken 4096 Jan 10 14:54 testusr/
+drwxr-xr-x  2 jfrost  jfrost  4096 Jan 10 14:53 jfrost/
+drwxr-xr-x  6 ubuntu  ubuntu  4096 Jan 10 14:47 ubuntu/
+```
 
 
 
