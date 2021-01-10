@@ -1,23 +1,33 @@
 # Github SSH 연결하기 (Git 비밀번호 없이 사용하기)
 
+windows에서는 자동으로 비밀번호가 등록되어 id/pw 입력 없이 git bash에서 사용할 수 있지만,
+
+linux에서는 일일히 입력하기 여간 귀찮은 부분이 아니다.
+
+ssh 연결으로 조금이라도 편하게 git commit/push 해보자.
+
+
+
 ## 1. public key 만들기
 ```cmd
 $ cd ~/.ssh
 $ ssh-keygen
 Generating puglic/private rsa key pair.
-Enter file in which to save the key (/home/username//.ssh/id_rsa):
+Enter file in which to save the key (/home/username/.ssh/id_rsa):
 ```
-key가 생성될 디렉토리 입력 (엔터로 넘어가면 현재 위치에 생성)
+key가 생성될 디렉토리 입력 (엔터로 넘어가면 위에서 물어보는 위치에 생성)
 
 ```cmd
 Enterpassphrase (empty for no passphrase) :
 Enter same passphrase again:
 ```
-비밀번호 입력 (엔터로 넘어가면 다음에 안물어본다)
+비밀번호 입력
 
-동일하게 진행했다면 `~/.ssh/id_rsa.pub` 생성
+여기까지 진행했다면 `~/.ssh/id_rsa.pub` 으로 public key가 생성되었다.
 
-`cat ~/.ssh/id_rsa.pub` 출력된 내용을 복사 (ssh-rsa 부터 복사)
+`cat ~/.ssh/id_rsa.pub` 출력된 내용을 복사 (처음부터 끝까지 복사)
+
+
 
 
 ## 2. Github에 등록
@@ -26,12 +36,29 @@ Enter same passphrase again:
 
 원하는 `Title` 입력
 
-public key를 `key`에 복사 (ssh-rsa 부터 입력)
+public key를 `key`에 복사 (처음부터 끝까지 입력)
 
 
-## 3. 다시 Clone하기
 
-ssh 연결을 적용하기 위해서 
+## 3. 내 repositroy 연동방식 변경
+
+### remote url 변경
+
+ssh 연결을 적용하기 위해서 다시 clone할 수도 있지만 이는 git에서 쓰는 `origin`라는 변수에 저장된 주소를 변경하기 위함이다.
+
+```bash
+local:~/Workspace$ git remote set-url origin git@github.com:[github계정명]/[repository명].git
+```
+
+위 명령어를 실행하면 origin에 저장된 repository 주소가 `https에서 ssh방식`으로 변경 적용된다. 
+
+- ssh버전의 주소는 내 `github repository page >  Code > ssh`에서 url을 복사하면 된다.
+
+
+
+### 그냥 clone하기
+
+remote고 뭐고 복잡해서 싫다? 그냥 clone을 다시하면 된다.
 
 `Clone을 원하는 Repository Page` 접속 > `Clone or download` 클릭 > `Clone with SSH` > url으로 원하는 경로에 clone
 
